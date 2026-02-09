@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Ulei 💚</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background-color: #4CAF50; /* fundal verde */
+        overflow: hidden;
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.3); /* fundal semi-transparent */
+        padding: 35px 45px;
+        border-radius: 22px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        min-width: 320px;
+        color: #fff; /* text alb pentru vizibilitate */
+    }
+
+    h1 {
+        margin-bottom: 25px;
+    }
+
+    button {
+        padding: 12px 28px;
+        font-size: 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        margin: 10px;
+        position: relative;
+        font-weight: bold;
+    }
+
+    #yesBtn {
+        background-color: #ff4d6d;
+        color: white;
+    }
+
+    #noBtn {
+        background-color: #d3d3d3;
+        color: black;
+        position: absolute;
+    }
+
+    #result {
+        margin-top: 25px;
+        font-size: 22px;
+        display: none;
+    }
+
+    .credit {
+        margin-top: 30px;
+        font-size: 12px;
+        color: #fff;
+        opacity: 0.9;
+        animation: fadeIn 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0.5; }
+        to { opacity: 1; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Îmi schimbi și mie uleiul diseară? 💌</h1>
+
+    <button id="yesBtn">Da</button>
+    <button id="noBtn">Nu</button>
+
+    <div id="result">MULTUMESC! Aștept să îmi comunici ora la care să vin ❤️</div>
+
+    <p class="credit">Developed by Monica aka morbleu 💙</p>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const result = document.getElementById("result");
+
+    // Butonul "Nu" fuge mereu
+    noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+
+    // Când dai click pe "Da"
+    yesBtn.addEventListener("click", () => {
+        result.style.display = "block";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+    });
+
+    // Asigură că "Nu" fuge chiar și la click accidental
+    noBtn.addEventListener("click", () => {
+        noBtn.dispatchEvent(new Event('mouseover'));
+    });
+</script>
+
+</body>
+</html>
